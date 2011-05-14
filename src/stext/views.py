@@ -29,6 +29,15 @@ def genJsLoader(req):
 		params['css_url'] = settings.CSS_URL
 	
 	return '''
+// ==UserScript==
+// @name          Social Web Markers
+// @namespace     socialwebmarkers
+// @description	  Mark the Web, see other people marks
+// @include       *
+// @version       0.1
+// @source       http://with.in/
+// @author       samlowry
+// ==/UserScript==
 (function(sl, cl, sg, ss) {
 	var d = document,
 		s = d.createElement("script"),

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Веб-сервис выделения кусков текста на сайтах</title>
+		<link type="text/css" href="{{ MEDIA_URL }}styles/base.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="content">
+			Букмарклет:
+			<textarea id="b_area"></textarea>
+			<a id="b_link">запустить</a>
+			<div class="text">
+				<p>В этом посте я приведу пример организации стилей на типичном проекте.</p>
+				<p>Небольшое вступление, попробую объяснить актуальность проблемы и зачем это нужно.
+				Рассмотрим такую ситуацию. Разработчику ставят задачу, реализовать очередной функционал на сайте. Это допустим включает добавление новых разделов, блоков, элементов. Разработчики зачастую не доверяют чужому коду, и когда доходят до верстки, находят css-файл с названием типа main.css и дописывают в конец свои новые стили.
+				Проходит некоторое время, приходит новый разработчик, ему ставят подобную задачу, он если и пытается разобраться в стилях, то видит, что там нет никакой закономерности, и повторяет то же, что делали предыдущие.
+				Руководство ставит сроки, разрабатывается все новый и новый функционал, проект растет. В итоге css файлы превращаются в мусорку, сайт грузится дольше, появляется больше дефектов и т.д..
+				Я думаю, многим это знакомо.</p>
+				<p>Теперь поговорим непосредственно о самой структуризации стилей.
+				Держать все стили в одном файле неразумно, со временем в нем довольно сложно становится ориентироваться. Плюс на каждой странице используются около 10% правил из этого файла, а весит он не мало.
+				Гораздо оптимальнее разделять стили по логическим блокам сайта.</p>
+				<p>
+				a = [1, 2, 3]; //cписок
+				</p>
+				
+				habrahabr (c)
+			</div>
+			
+		</div>
+		<script>
+			function genBookmarklet() {
+				var b = String((function(sl, cl, t){
+							var d = document;
+								s = d.createElement('script'),
+								c = d.createElement('link'),
+								h = d.getElementsByTagName('head')[0];
+							
+							s.src = sl;
+							s.type="text/javascript";
+							s.language="JavaScript";
+							c.type="text/css";
+							c.rel="stylesheet";
+							c.href=cl;
+							
+							h.appendChild(s);
+							h.appendChild(c);
+							
+							window.TS_CONFIG = {
+								"SELECTION_GET": t+"/selection/get/",
+								"SELECTION_SAVE": t+"/selection/save/",
+							}
+						})).replace(/\t|\n|[ ]{4}/g, ""),
+					l = window.location,
+					base_url = ([l.protocol, "//", l.host]).join('');
+				b = 'javascript:((' + b.replace(/\\"/g, '"') + ')(' +
+						([
+							(['"', base_url, "{{JS_URL}}", '"']).join(""),
+							(['"', base_url, "{{CSS_URL}}", '"']).join(""),
+							(['"', base_url, '"']).join("")
+						]).join(",") +
+					'))';
+				return b;
+			}
+			var d = document;
+			d.getElementById('b_link').href = 	d.getElementById('b_area').value = genBookmarklet();
+		</script>
+	</body>
+</html>

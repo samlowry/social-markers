@@ -1,0 +1,6 @@
+apache2/
+bin/
+lib/
+myproject.wsgi
+myproject/
+

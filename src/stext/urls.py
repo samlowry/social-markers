@@ -5,4 +5,5 @@ urlpatterns = patterns('stext.views',
 	(r'^$', 'mainPage'),
 	(r'^selection/get', 'getSelections'),
 	(r'^selection/save', 'saveSelection'),
+	(r'^marker.user.js$', 'genUserJs'),
 )

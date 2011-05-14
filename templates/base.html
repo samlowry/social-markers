@@ -9,7 +9,8 @@
 		<div id="content">
 			Букмарклет:
 			<textarea id="b_area"></textarea>
-			<a id="b_link">запустить</a>
+			<a id="b_link">запустить</a><br>
+			<a href="/marker.user.js">marker.user.js</a>
 			<div class="text">
 				<p>В этом посте я приведу пример организации стилей на типичном проекте.</p>
 				<p>Небольшое вступление, попробую объяснить актуальность проблемы и зачем это нужно.
@@ -29,41 +30,8 @@
 			
 		</div>
 		<script>
-			function genBookmarklet() {
-				var b = String((function(sl, cl, t){
-							var d = document;
-								s = d.createElement('script'),
-								c = d.createElement('link'),
-								h = d.getElementsByTagName('head')[0];
-							
-							s.src = sl;
-							s.type="text/javascript";
-							s.language="JavaScript";
-							c.type="text/css";
-							c.rel="stylesheet";
-							c.href=cl;
-							
-							h.appendChild(s);
-							h.appendChild(c);
-							
-							window.TS_CONFIG = {
-								"SELECTION_GET": t+"/selection/get/",
-								"SELECTION_SAVE": t+"/selection/save/",
-							}
-						})).replace(/\t|\n|[ ]{4}/g, ""),
-					l = window.location,
-					base_url = ([l.protocol, "//", l.host]).join('');
-				b = 'javascript:((' + b.replace(/\\"/g, '"') + ')(' +
-						([
-							(['"', base_url, "{{JS_URL}}", '"']).join(""),
-							(['"', base_url, "{{CSS_URL}}", '"']).join(""),
-							(['"', base_url, '"']).join("")
-						]).join(",") +
-					'))';
-				return b;
-			}
-			var d = document;
-			d.getElementById('b_link').href = 	d.getElementById('b_area').value = genBookmarklet();
+			var s = function(id) { return document.getElementById(id); };
+			s('b_link').href = s('b_area').value = '{{bookmarklet|safe}}';
 		</script>
 	</body>
 </html>

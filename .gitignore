@@ -3,4 +3,5 @@ bin/
 lib/
 myproject.wsgi
 myproject/
-
+var/db.sqlite
+*.pyc

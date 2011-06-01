@@ -4,11 +4,12 @@
 		<meta charset="utf-8">
 		<title>Веб-сервис выделения кусков текста на сайтах</title>
 		<link type="text/css" href="{{ MEDIA_URL }}styles/base.css" rel="stylesheet">
+		<style>* {font-family:Arial} .dl {font-size:50px;font-style:italic;font-weight:bold;margin:20px 0 50px 0 } {}</style>
 	</head>
 	<body>
 		<div id="content">
 			{# <textarea id="b_area"></textarea> #}
-			<small><em><a href="/marker.user.js">юзерскрипт</a>{# , <a id="b_link">букмраклет</a> #}</em></small>
+			<div class="dl"><a href="/marker.user.js">Установить Юзерскрипт</a>{# , <a id="b_link">букмраклет</a> #}</div>
 			<div class="text">
 				Задумайтесь — что изменилось в работе с информацией с 90х годов? Нет-нет, не тычьте мне в морду твиттерами и френдфидами, я не о доставке, я о потреблении.
 				
@@ -29,7 +30,7 @@
 				<br>
 				<em>Сейчас у вас есть возможность ознакомиться с прототипом сервиса. Установите <a href="/marker.user.js">пользовательский скрипт</a>{#  или <a id="b_link">перетащите букмарклет</a> #}, отмечайте и смотрите, что отметили другие.</em>
 			</div>
-			
+			<div class="dl"><a href="/marker.user.js">Установить Юзерскрипт</a>{# , <a id="b_link">букмраклет</a> #}</div>			
 		</div>
 		<script>
 			var s = function(id) { return document.getElementById(id); };

@@ -1,10 +1,11 @@
 .TSGood {
-	background-color: 89FC63;
+	background-color: #89FC63;
+	font-weight:bold;
 	display: inline;
 }
 
 .TSBad {
-	background-color: gray;
+	font-color: gray;
 	display: inline;
 }
 
